@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <welcome-file-list>
+        <welcome-file>
+            index.jsp
+        </welcome-file>
+    </welcome-file-list>
+    <context-param>
+        <param-name>QuestionsPerPage</param-name>
+        <param-value>3</param-value>
+    </context-param>
+    <context-param>
+        <param-name>NewQuestionsAmount</param-name>
+        <param-value>2</param-value>
+    </context-param>
+    <context-param>
+        <param-name>QuestionContentPreviewLength</param-name>
+        <param-value>35</param-value>
+    </context-param>
+    <listener>
+        <description>HttpSessionListener, HttpSessionAttributeListener</description>
+        <listener-class>listeners.CountUserListener</listener-class>
+    </listener>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>

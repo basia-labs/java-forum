@@ -1,0 +1,12 @@
+<head>
+    <jsp:include page="PARTIAL/headDefault.html" />
+    <title>JSP page</title>
+</head>
+<body>
+    <jsp:include page="PARTIAL/banner.jsp" />
+    <div class="container body-content min-vh-100">
+
+    </div>
+
+    <jsp:include page="PARTIAL/footer.jsp" />
+</body>
