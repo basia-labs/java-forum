@@ -16,19 +16,8 @@
     <body>
         <jsp:include page="Partial/banner.jsp" />
         <div class="container body-content min-vh-100">
-
-            <div class="card mb-3">
-                <div class="card-header">
-                    <p>${user.nick}</p>
-                    <p>${user.email}</p>
-                </div>
-                <div class="card-body">
-                    <p class="col-md-9 text-justify" style="white-space:pre-line;">
-                        
-                    </p>
-                </div>
-            </div>
-
+            <h4 style="display: inline-block;">Username: </h4> <h5 style="display: inline-block;">${user.nick}</h5>    <br>    
+            <h4 style="display: inline-block;">Email: </h4> <h5 style="display: inline-block;">${user.email}</h5>
         </div>
 
         <jsp:include page="Partial/footer.jsp" />

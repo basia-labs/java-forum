@@ -67,12 +67,10 @@
 <body>
     <jsp:include page="Partial/banner.jsp" />
     <div class="container body-content min-vh-100">
-        <h1>${question.title}</h1>
-        <hr/>
-
         <div class="card mb-3">
-            <div class="card-header text-end">
-                <p>${question.questionAuthor.nick} (${question.date})</p>
+            <div class="card-header">
+                <h4>${question.title}</h4>
+                <p>Added by ${question.questionAuthor.nick} (${question.date})</p>
             </div>
             <div class="card-body">
                 <p class="col-md-9 text-justify" style="white-space:pre-line;">
@@ -114,7 +112,7 @@
             </div>
         </c:forEach>
 
-        <h2>Answer</h2>
+        <h2>Your answer</h2>
         <hr/>
 
         <div class="container">

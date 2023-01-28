@@ -4,23 +4,10 @@
  */
 package com.mycompany.javaforum;
 
-import java.io.File;
-import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathConstants;
-import javax.xml.xpath.XPathExpression;
-import javax.xml.xpath.XPathExpressionException;
-import javax.xml.xpath.XPathFactory;
-import org.xml.sax.SAXException;
-import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.DocumentBuilder;
 
 /**
  *
@@ -59,30 +46,5 @@ public class Helpers {
         }
 
         return sb.toString();
-    }
-
-    public static NodeList getNodeList(String xmlUrl, String xPathExp)
-            throws IOException, SAXException, XPathExpressionException, ParserConfigurationException {
-        Document doc = getXMLDoc(xmlUrl);
-
-        //search XML
-        XPathFactory xFactory = XPathFactory.newInstance();
-        XPath xPath = xFactory.newXPath();
-
-        XPathExpression exp = xPath.compile(xPathExp);
-        NodeList nodeList = (NodeList) exp.evaluate(doc, XPathConstants.NODESET);
-        return nodeList;
-    }
-
-    public static Document getXMLDoc(String XML_PATH)
-            throws SAXException, ParserConfigurationException, IOException {
-        //get file
-        File file = new File(XML_PATH);
-        //parse XML
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        DocumentBuilder db = dbf.newDocumentBuilder();
-        Document doc = db.parse(file);
-        doc.getDocumentElement().normalize();
-        return doc;
     }
 }

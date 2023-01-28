@@ -9,7 +9,7 @@
 <footer>
     <p></p>
 
-    <footer class="text-center text-white bg-primary">
+    <footer class="text-center text-white bg-dark">
         <%
             if (request.getSession().getAttribute("user") != null) {
         %>
@@ -32,7 +32,7 @@
 
         <div class="text-center p-1" style="background-color: rgba(0, 0, 0, 0.15);">
             © 2022 Copyright:
-            <a class="text-white" href="https://github.com/PawelDrozdowski" target="_blank">Paweł Drozdowski</a>
+            <a class="text-white" href="https://github.com/BristolEcru" target="_blank">Basia</a>
         </div>
     </footer>
 </footer>

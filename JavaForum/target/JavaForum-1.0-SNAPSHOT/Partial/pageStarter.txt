@@ -1,12 +1,12 @@
 <head>
-    <jsp:include page="PARTIAL/headDefault.html" />
+    <jsp:include page="Partial/headDefault.html" />
     <title>JSP page</title>
 </head>
 <body>
-    <jsp:include page="PARTIAL/banner.jsp" />
+    <jsp:include page="Partial/banner.jsp" />
     <div class="container body-content min-vh-100">
 
     </div>
 
-    <jsp:include page="PARTIAL/footer.jsp" />
+    <jsp:include page="Partial/footer.jsp" />
 </body>

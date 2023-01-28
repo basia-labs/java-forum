@@ -4,6 +4,7 @@
     Author     : pawel
 --%>
 
+<%@page import="java.sql.SQLException"%>
 <%@page import="java.util.LinkedList"%>
 <%@page import="com.mycompany.javaforum.Question"%>
 <%@page import="Db.DbQuestions"%>
@@ -15,19 +16,20 @@
     String neQuestionsLimit = getServletContext().getInitParameter("NewQuestionsAmount");
     String questionsLimit = getServletContext().getInitParameter("QuestionsPerPage");
     int contentLimit = Integer.parseInt(getServletContext().getInitParameter("QuestionContentPreviewLength"));
-    
-    LinkedList<Question> newQuestionsList = DbQuestions.getDbQuestionList("","ORDER BY qId DESC", neQuestionsLimit);
-    LinkedList<Question> questionsList = DbQuestions.getDbQuestionList("","ORDER BY qId DESC", questionsLimit);
+
+    LinkedList<Question> newQuestionsList = DbQuestions.getDbQuestionList("", "ORDER BY qId DESC", neQuestionsLimit);
+    LinkedList<Question> questionsList = DbQuestions.getDbQuestionList("", "ORDER BY qId DESC", questionsLimit);
 
     request.setAttribute("contentLimit", contentLimit);
     request.setAttribute("newQuestionsList", newQuestionsList);
     request.setAttribute("questionsList", questionsList);
+
 %>
 
 <!DOCTYPE html>
 <head>
     <jsp:include page="Partial/headDefault.html" />
-    <title>Ask me things</title>
+    <title>Java forum</title>
 </head>
 <body>
     <jsp:include page="Partial/banner.jsp" />
@@ -39,18 +41,14 @@
                 <c:forEach items="${newQuestionsList}" var="q">
                     <div class="pb-3">
                         <div class="card small">
-                            <div class="card-header text-end p-4">
+                            <div class="card-header p-4">
                                 <p class="m-0">${q.date}</p>   
                             </div>
                             <div class="card-body">
-                                <h6 class="card-title">${q.title}</h6>
+                                <h6 class="card-title"><a href="question.jsp?id=${q.id}">${q.title}</a></h6>
                                 <p class="card-text">                                  
                                     ${contentLimit > q.content.length() ? q.content : q.content.substring(0,contentLimit)}
                                 </p>
-                                <div class="d-flex justify-content-center align-items-center">
-                                    <a href="question.jsp?id=${q.id}" class="btn btn-primary">More</a>
-                                </div>
-
                             </div>
                         </div>
                     </div>
@@ -61,24 +59,22 @@
 
         <!--Right block-->
         <div class="col-md-9 offset-1">
-            <form class="d-flex col-md-8 offset-1 pb-3" method="GET">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">🔍</button>
+            <form class="d-flex col-md-8 offset-1 pb-3">
                 <input class="form-control me-sm-2 col-md-6 offset-1" type="text" id="search" name="search" placeholder="Search">
+                <button class="btn btn-primary" type="submit">Szukaj</button>
             </form>
 
             <c:forEach items="${questionsList}" var="q">
                 <div class="pb-3">
                     <div class="card">
-                        <div class="card-header text-end p-4">
-                            <p class="m-0">${q.date} &emsp; Number of answers: ${q.answers.size()}</p>   
+                        <div class="card-header p-4">
+                            <h5 class="card-title "><a href="question.jsp?id=${q.id}">${q.title}</a></h5>
+                            <p class="m-0 text-left text-align-left">${q.date} &emsp; Number of answers: ${q.answers.size()}</p>   
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">${q.title}</h5>
                             <p class="card-text">
                                 ${q.content}
                             </p>
-                            <a href="question.jsp?id=${q.id}" class="btn btn-primary">More</a>
-
                         </div>
                     </div>
                 </div>

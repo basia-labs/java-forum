@@ -32,8 +32,8 @@
         <div class="container body-content min-vh-100">    
             <h2 class="text-center">My answers</h2>
             <form class="d-flex col-md-8 offset-1 pb-3" method="GET">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">🔍</button>
                 <input class="form-control me-sm-2 col-md-6 offset-1" type="text" id="search" name="search" placeholder="Search">
+                <button class="btn btn-primary" type="submit">Szukaj</button>
             </form>
 
             <c:forEach items="${answers}" var="a">

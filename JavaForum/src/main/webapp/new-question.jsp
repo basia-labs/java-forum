@@ -18,8 +18,8 @@
         String contentPOST = request.getParameter("content");
 
         //validate input
-        boolean validData = titlePOST != null && contentPOST != null 
-            && titlePOST.length() > 4 && contentPOST.length() > 4;
+        boolean validData = titlePOST != null && contentPOST != null
+                && titlePOST.length() > 4 && contentPOST.length() > 4;
 
         //insert if valid
         if (validData) {
@@ -29,9 +29,9 @@
             } else {
                 errorMessage = "Internal server error";
             }
-        }
-        else
+        } else {
             errorMessage = "Invalid data";
+        }
     }
 %>
 
@@ -45,21 +45,24 @@
     <div class="container body-content min-vh-100">
         <h2>New Question</h2>
         <form method="POST">
-            <%=errorMessage%>
-            
-            <input type="hidden" name="userId" value="<%=((User)request.getSession().getAttribute("user")).id%>"/>
-            
-            <div class="mb-3 col-6">
-                <label for="email" class="form-label">Title</label>
-                <input type="text"class="form-control" id="title" name="title"/>
-            </div>
 
             <div class="mb-3 col-6">
-                <label for="content" class="form-label">Content</label>
-                <textarea class="form-control input-group col-md-10" id="content" name="content" cols="40" rows="5"></textarea>
-            </div>
+                <%=errorMessage%>
 
-            <button type="submit" class="btn btn-primary">Ask</button>
+                <input type="hidden" name="userId" value="<%=((User) request.getSession().getAttribute("user")).id%>"/>
+
+                <div>
+                    <label for="email" class="form-label">Title</label>
+                    <input type="text"class="form-control" id="title" name="title"/>
+                </div>
+
+                <div>
+                    <label for="content" class="form-label">Content</label>
+                    <textarea class="form-control input-group col-md-10" id="content" name="content" cols="40" rows="5"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-2" style="width: 100%">Ask</button>
+            </div>
         </form>
 
     </div>
