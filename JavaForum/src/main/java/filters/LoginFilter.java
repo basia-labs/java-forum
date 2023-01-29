@@ -175,7 +175,7 @@ public class LoginFilter implements Filter {
     }
 
     private void logFailure(HttpServletRequest req, ServletRequest request) throws IOException {
-        String path = req.getServletContext().getRealPath("/LOGGERS/bad_logins.txt");
+        String path = req.getServletContext().getRealPath("/LOGGERS/wrong_logins.txt");
         FileWriter writer = new FileWriter(path, true);
         writer.write(request.getRemoteAddr() + "\n");
         writer.close();

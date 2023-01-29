@@ -26,6 +26,17 @@
 
 %>
 
+<%
+    //search
+    if (request.getMethod().equals("POST")) {
+        //read POST
+        String searchedTitle = request.getParameter("search");
+        String sql = "WHERE title LIKE '%" + searchedTitle + "%'";
+        questionsList = DbQuestions.getDbQuestionList(sql, "ORDER BY qId DESC", questionsLimit);
+        request.setAttribute("questionsList", questionsList);
+    }
+%>
+
 <!DOCTYPE html>
 <head>
     <jsp:include page="Partial/headDefault.html" />
@@ -53,13 +64,14 @@
                         </div>
                     </div>
                 </c:forEach>
+                <a class="btn btn-primary" href="https://github.com/BristolEcru" target="_blank">Przycisk</a>
             </div>
         </div>
         <!--Left block-->
 
         <!--Right block-->
         <div class="col-md-9 offset-1">
-            <form class="d-flex col-md-8 offset-1 pb-3">
+            <form class="d-flex col-md-8 offset-1 pb-3" method="POST">
                 <input class="form-control me-sm-2 col-md-6 offset-1" type="text" id="search" name="search" placeholder="Search">
                 <button class="btn btn-primary" type="submit">Szukaj</button>
             </form>
